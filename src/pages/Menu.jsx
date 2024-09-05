@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { setItems as setOrderItems } from "../store/orderSlice.js";
 import FeaturedSection from "../components/common/FeaturedSection.jsx";
 import Clock from "../components/common/Icons/Clock.jsx";
+import LoadingAnimation from "../assets/LoadAnimation.gif";
 function Menu() {
   const [items, setItemss] = useState([]);
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ function Menu() {
       </h1>
       <FeaturedSection className="hidden lg:block w-4/5  mx-auto rounded-lg" />
       <div className="flex flex-wrap gap-5 justify-center mb-4 w-4/5 mx-auto">
-        {items &&
+        {items.length > 0 ? (
           items.map((item) => (
             <div
               key={item._id}
@@ -64,7 +65,17 @@ function Menu() {
                 </div>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <div className="mt-10 lg:mt-0 flex justify-center items-center text-white">
+            {/* <h1 className="text-4xl">Loading...</h1> */}
+            <img
+              className="h-44 fill-red-400"
+              src={LoadingAnimation}
+              alt="Loading..."
+            />
+          </div>
+        )}
       </div>
     </>
   );

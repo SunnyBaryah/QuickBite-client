@@ -17,6 +17,7 @@ import Dashboard from "./pages/admin/Dashboard.jsx";
 import EditMenu from "./pages/admin/EditMenu.jsx";
 import AllOrders from "./pages/admin/AllOrders.jsx";
 import SignIn from "./pages/admin/SignIn.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -56,6 +57,14 @@ const router = createBrowserRouter([
           </AuthLayout>
         ),
       },
+      {
+        path: "/*",
+        element: (
+          <AuthLayout authentication={false}>
+            <NotFoundPage />
+          </AuthLayout>
+        ),
+      },
     ],
   },
   {
@@ -87,6 +96,14 @@ const router = createBrowserRouter([
         element: (
           <AdminAuthLayout authentication={true}>
             <AllOrders />
+          </AdminAuthLayout>
+        ),
+      },
+      {
+        path: "/admin/*",
+        element: (
+          <AdminAuthLayout authentication={false}>
+            <NotFoundPage />
           </AdminAuthLayout>
         ),
       },
