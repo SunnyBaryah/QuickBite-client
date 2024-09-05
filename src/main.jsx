@@ -59,11 +59,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/*",
-        element: (
-          <AuthLayout authentication={false}>
-            <NotFoundPage />
-          </AuthLayout>
-        ),
+        element: <NotFoundPage />,
       },
     ],
   },
@@ -101,11 +97,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin/*",
-        element: (
-          <AdminAuthLayout authentication={false}>
-            <NotFoundPage />
-          </AdminAuthLayout>
-        ),
+        element: <NotFoundPage />,
       },
     ],
   },
