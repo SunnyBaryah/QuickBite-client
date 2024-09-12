@@ -11,6 +11,7 @@ import { clearItems } from "../store/orderSlice.js";
 import EmptyCart from "../components/common/Icons/EmptyCart.jsx";
 import Clock from "../components/common/Icons/Clock.jsx";
 import FilledCart from "../components/common/Icons/FilledCart.jsx";
+
 function Cart() {
   const dispatch = useDispatch();
   const [popUp, setPopUp] = useState(false);
@@ -27,6 +28,18 @@ function Cart() {
         position: "bottom-right",
       });
     }
+  }
+  function copyToClipboard(payLink) {
+    navigator.clipboard
+      .writeText(payLink)
+      .then(() => {
+        toast.success("Link copied successfully", {
+          position: "bottom-center",
+        });
+      })
+      .catch((err) => {
+        toast.error("Error : ", err);
+      });
   }
   return (
     <div className="flex flex-col lg:grid lg:grid-cols-2">
@@ -99,7 +112,10 @@ function Cart() {
                   </Button>
                 </Link>
                 <Link to="/">
-                  <Button className="mr-2 lg:mr-0 bg-red-400 text-white">
+                  <Button
+                    onClick={() => copyToClipboard(payLink)}
+                    className="mr-2 lg:mr-0 bg-red-400 text-white"
+                  >
                     Copy Payment URL
                   </Button>
                 </Link>

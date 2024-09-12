@@ -4,6 +4,7 @@ import OrderHistoryImg from "../../assets/order-history-compressed.jpg";
 import orderService from "../../services/orders.js";
 import { useState, useEffect } from "react";
 import Button from "../../components/common/Button.jsx";
+import { toast } from "react-toastify";
 function Dashboard() {
   const [orders, setOrders] = useState([]);
   const [loader, setLoader] = useState(true);
@@ -28,6 +29,9 @@ function Dashboard() {
         if (selectedOrder._id === order._id) {
           order = { ...order, status };
         }
+      });
+      toast.success("Order status updated successfully", {
+        position: "bottom-left",
       });
     }
   }

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../store/authSlice";
 import Button from "../common/Button.jsx";
+import { toast } from "react-toastify";
 function LogoutBtn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -11,7 +12,8 @@ function LogoutBtn() {
       const response = await authService.logout();
       if (response.status === 200) {
         dispatch(logout());
-        navigate("/sign-up");
+        navigate("/");
+        toast.success("Logged out successfully", { position: "bottom-right" });
       }
     } catch (e) {
       console.log("Error while logout process : ", e);

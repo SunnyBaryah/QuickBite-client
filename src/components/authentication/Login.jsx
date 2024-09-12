@@ -6,6 +6,7 @@ import { login as authLogin } from "../../store/authSlice.js";
 import Input from "../common/Input.jsx";
 import Button from "../common/Button.jsx";
 import authService from "../../services/auth.js";
+import { toast } from "react-toastify";
 
 function Login() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ function Login() {
         const userData = await authService.getCurrentUser();
         if (userData) dispatch(authLogin(userData));
         navigate("/menu");
+        toast.success("Logged in successfully", { position: "bottom-right" });
       }
     } catch (error) {
       setError(error.message);

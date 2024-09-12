@@ -7,6 +7,7 @@ import adminService from "../../services/admin.js";
 import { login as authLogin } from "../../store/adminSlice.js";
 import Button from "../../components/common/Button.jsx";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 function SignIn() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ function SignIn() {
         const adminData = await adminService.getCurrentAdmin();
         if (adminData) dispatch(authLogin(adminData));
         navigate("/admin");
+        toast.success("Admin logged in successfully", {
+          position: "bottom-right",
+        });
       }
     } catch (error) {
       setError(error.message);

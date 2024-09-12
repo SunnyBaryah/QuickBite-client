@@ -8,6 +8,14 @@ export class MenuService {
       throw error;
     }
   }
+  async updateMenuItem(data) {
+    try {
+      const response = await axios.put("/menu/update-menu", { data });
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
   async updateMenu(data) {
     try {
       const response = await axios.post("/menu/add-menu", { data });

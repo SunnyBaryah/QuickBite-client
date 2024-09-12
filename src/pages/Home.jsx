@@ -23,13 +23,11 @@ function Home() {
       <div className="flex flex-col items-center xl:justify-between xl:flex-row xl:px-60 xl:mt-28 md:px-0 ">
         <img className="h-80 w-80 xl:h-96 xl:w-96" src={chef} />
         <div className="flex flex-col justify-center mt-4 xl:mt-0">
-          <div className="flex font-bold text-2xl md:text-3xl lg:text-5xl xl:text-7xl">
-            <h2 className=" text-white ">Instant bites</h2>
-            <h2 className=" text-red-400 ">,&nbsp;</h2>
-            <h2 className=" text-white ">endless delight</h2>
-            <h2 className=" text-red-400 ">.</h2>
-          </div>
-          <div className="mt-4 xl:mt-12 flex justify-evenly">
+          <h2 className="text-center text-2xl md:text-3xl lg:text-5xl xl:text-6xl text-white font-bold">
+            Instant bites<span className="text-red-400">,</span> endless delight
+            <span className="text-red-400">.</span>
+          </h2>
+          <div className="mt-4 mb-2 xl:mb-0 xl:mt-12 flex justify-evenly">
             <Button
               onClick={() => navigate("/menu")}
               className="text-white bg-red-400 w-5/12"
@@ -50,14 +48,9 @@ function Home() {
       {!isloggedIn && (
         <div className="flex flex-col my-6 lg:flex-row justify-evenly items-center lg:gap-20 xl:px-60 lg:my-28 ">
           <div className="flex flex-col gap-4 items-center lg:gap-5 xl:gap-7">
-            <div className="flex gap-0">
-              <h2 className="text-2xl lg:text-5xl xl:text-7xl text-white font-bold">
-                Admin Portal
-              </h2>
-              <h2 className="text-2xl  lg:text-5xl xl:text-7xl text-red-400 font-bold">
-                .
-              </h2>
-            </div>
+            <h2 className="text-2xl lg:text-5xl xl:text-7xl text-white font-bold">
+              Admin Portal<span className="text-red-400">.</span>
+            </h2>
             <Button
               onClick={() => navigate("/admin/signin")}
               className=" text-white bg-red-400 w-full"
